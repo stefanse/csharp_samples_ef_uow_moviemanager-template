@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MovieManager.Persistence.Migrations
@@ -13,7 +12,7 @@ namespace MovieManager.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
                     CategoryName = table.Column<string>(nullable: false)
                 },
@@ -27,7 +26,7 @@ namespace MovieManager.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RowVersion = table.Column<byte[]>(rowVersion: true, nullable: true),
                     Title = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
