@@ -1,4 +1,5 @@
 ﻿using MovieManager.Core;
+using MovieManager.Core.Contracts;
 using MovieManager.Core.Entities;
 using MovieManager.Persistence;
 using System;
@@ -28,9 +29,11 @@ namespace MovieManager.ImportConsole
             using (UnitOfWork unitOfWork = new UnitOfWork())
             {
                 Console.WriteLine("Datenbank löschen");
+               // unitOfWork.DeleteDatabase();
                 //TODO: Datenbank löschen
 
                 Console.WriteLine("Datenbank migrieren");
+               // unitOfWork.MigrateDatabase();
                 //TODO: Migrationen anstoßen
 
                 Console.WriteLine("Movies/Categories werden eingelesen");
@@ -42,7 +45,8 @@ namespace MovieManager.ImportConsole
                     return;
                 }
 
-                var categories = Enumerable.Empty<Movie>();
+                var categories = movies.Select(c => { new Category = c.Category}).ToArray(); // Enumerable.Empty<Movie>();
+
                 //TODO: Kategorien ermitteln
 
                 Console.WriteLine($"  Es wurden {movies.Count()} Movies in {categories.Count()} Kategorien eingelesen!");
@@ -63,8 +67,14 @@ namespace MovieManager.ImportConsole
             // Längster Film: Bei mehreren gleichlangen Filmen, soll jener angezeigt werden, dessen Titel im Alphabet am weitesten vorne steht.
             // Die Dauer des längsten Films soll in Stunden und Minuten angezeigt werden!
             //TODO
+            /*
+            using(IUnitOfWork uow = new IUnitOfWork())
+            {
 
 
+
+            }
+            */
             // Top Kategorie:
             //   - Jene Kategorie mit den meisten Filmen.
             //TODO
