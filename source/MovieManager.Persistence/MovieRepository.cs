@@ -13,12 +13,24 @@ namespace MovieManager.Persistence
             _dbContext = dbContext;
         }
 
-        public Movie getlaengsterFilm()
+        public Movie LaengsterFilm()
         {
             return _dbContext.Movies.OrderByDescending(f => f.Duration)
                 .ThenBy(f => f.Title
-                ).First();
+                ).FirstOrDefault();
         }
+
+        public Movie KategorieMitDenMeistenFilmen()
+        {
+            return _dbContext.Movies.OrderByDescending(f => f.Category)
+                .ThenBy(f => f.Title
+                ).FirstOrDefault();
+        }
+
+
+
+
+
 
 
 
